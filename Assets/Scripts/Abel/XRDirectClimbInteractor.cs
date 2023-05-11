@@ -23,6 +23,7 @@ public class XRDirectClimbInteractor : XRDirectInteractor
         if(args.interactableObject.transform.gameObject.tag == "Climbable")
         {
             ClimbHandActivated?.Invoke(_controllerName);
+            Debug.Log(_controllerName);
         }
     }
     protected override void OnSelectExited(SelectExitEventArgs args)

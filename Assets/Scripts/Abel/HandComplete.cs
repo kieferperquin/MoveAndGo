@@ -16,14 +16,14 @@ public class HandComplete : MonoBehaviour
 
     //Stores the InputDevice that we're Targeting once we find it in InitializeHand()
     private InputDevice _targetDevice;
-    private Animator _handAnimator;
+    // private Animator _handAnimator;
     private SkinnedMeshRenderer _handMesh;
 
     public void HideHandOnSelect()
     {
         if (hideHandOnSelect)
         {
-            _handMesh.enabled = !_handMesh.enabled;
+            // _handMesh.enabled = !_handMesh.enabled;
         }
     }
     private void Start()
@@ -45,7 +45,7 @@ public class HandComplete : MonoBehaviour
             _targetDevice = devices[0];
 
             GameObject spawnedHand = Instantiate(handPrefab, transform);
-            _handAnimator = spawnedHand.GetComponent<Animator>();
+            // _handAnimator = spawnedHand.GetComponent<Animator>();
             _handMesh = spawnedHand.GetComponentInChildren<SkinnedMeshRenderer>();
         }
     }
@@ -70,20 +70,20 @@ public class HandComplete : MonoBehaviour
         //This will get the value for our trigger from the target device and output a flaot into triggerValue
         if (_targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
-            _handAnimator.SetFloat("Trigger", triggerValue);
+            // _handAnimator.SetFloat("Trigger", triggerValue);
         }
         else
         {
-            _handAnimator.SetFloat("Trigger", 0);
+            // _handAnimator.SetFloat("Trigger", 0);
         }
         //This will get the value for our grip from the target device and output a flaot into gripValue
         if (_targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
-            _handAnimator.SetFloat("Grip", gripValue);
+            // _handAnimator.SetFloat("Grip", gripValue);
         }
         else
         {
-            _handAnimator.SetFloat("Grip", 0);
+            // _handAnimator.SetFloat("Grip", 0);
         }
     }
 
