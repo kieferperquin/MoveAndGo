@@ -7,7 +7,7 @@ public class LavaRise : MonoBehaviour
 {
     [SerializeField] GameObject MaxHight;
 
-    public int MaxTime;
+    int maxTime;
 
     int currTime;
     int timeWaited;
@@ -24,7 +24,7 @@ public class LavaRise : MonoBehaviour
     void Start()
     {
         float hightDif = MathF.Abs(this.gameObject.transform.position.y - MaxHight.transform.position.y);
-        hightDifPerSecond = hightDif / MaxTime;
+        hightDifPerSecond = hightDif / maxTime;
         currTime = 1;
     }
 
@@ -41,7 +41,7 @@ public class LavaRise : MonoBehaviour
 
             loopTimer = (int)Time.time - timeWaited;
 
-            if (loopTimer >= currTime && currTime < MaxTime)
+            if (loopTimer >= currTime && currTime < maxTime)
             {
                 currTime++;
                 LavaIncrease();
@@ -58,12 +58,19 @@ public class LavaRise : MonoBehaviour
 
         gameObject.transform.position = GoingPos;
     }
+
     public void startRising()
     {
         started = true;
     }
+
     public void Reset()
     {
         Start();   
+    }
+
+    public void SetMaxTime(int time)
+    {
+        maxTime = time;
     }
 }
