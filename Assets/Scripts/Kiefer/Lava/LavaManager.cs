@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LavaManager : MonoBehaviour
 {
-    [SerializeField] GameObject lava;
+    [SerializeField] private GameObject lava;
     public int maxTime;
-    [SerializeField] bool startTest;
+    [SerializeField] private bool startTest;
 
     private void Update()
     {
@@ -16,14 +16,9 @@ public class LavaManager : MonoBehaviour
             startTest = false;
         }
     }
-
-    private void Start()
-    {
-        lava.GetComponent<LavaRise>().SetMaxTime(maxTime);
-    }
-
     public void StartLava()
     {
+        lava.GetComponent<LavaRise>().SetMaxTime(maxTime);
         lava.GetComponent<LavaRise>().startRising();
     }
 

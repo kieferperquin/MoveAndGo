@@ -308,6 +308,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2856757424129223624, guid: ac70d88e787f24d49bdb1fe094d1d5d5,
+        type: 3}
+      propertyPath: maxTime
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2856757424129223625, guid: ac70d88e787f24d49bdb1fe094d1d5d5,
         type: 3}
       propertyPath: m_RootOrder
@@ -368,5 +373,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava
       objectReference: {fileID: 0}
+    - target: {fileID: 2856757424236974858, guid: ac70d88e787f24d49bdb1fe094d1d5d5,
+        type: 3}
+      propertyPath: MaxHeight
+      value: 
+      objectReference: {fileID: 2856757424751705504}
+    - target: {fileID: 2856757424236974858, guid: ac70d88e787f24d49bdb1fe094d1d5d5,
+        type: 3}
+      propertyPath: HeightLimit
+      value: 
+      objectReference: {fileID: 2856757424751705504}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac70d88e787f24d49bdb1fe094d1d5d5, type: 3}
+--- !u!1 &2856757424751705504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2856757423030847273, guid: ac70d88e787f24d49bdb1fe094d1d5d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2856757424751705503}
+  m_PrefabAsset: {fileID: 0}

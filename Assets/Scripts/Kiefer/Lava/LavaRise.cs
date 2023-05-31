@@ -5,26 +5,30 @@ using UnityEngine;
 
 public class LavaRise : MonoBehaviour
 {
-    [SerializeField] private GameObject MaxHeight;
+    #region Variables
+    [SerializeField] private GameObject HeightLimit;
 
     private int maxTime;
 
-    private float heightDifPerSecond;
+    private float currTime;
 
-    private Vector3 currHeight;
-    private Vector3 heightDiff;
+    private Vector3 MaxHeight;
+    private Vector3 StartingPos;
 
     private bool started = false;
-
+    #endregion
+    #region Code
     void Start()
     {
-        heightDifPerSecond = (MaxHeight.transform.position.y - gameObject.transform.position.y) / maxTime;
+        MaxHeight = HeightLimit.transform.position;
+        started = false;
         gameObject.transform.position = new Vector3(0, 0, 0);
+        StartingPos = gameObject.transform.position;
     }
 
     void Update()
     {
-        if (started && gameObject.transform.position.y < MaxHeight.transform.position.y)
+        if (started && currTime < maxTime)
         {
             LavaRising();
         }
@@ -32,15 +36,15 @@ public class LavaRise : MonoBehaviour
 
     void LavaRising()
     {
-        currHeight = gameObject.transform.position;
+        currTime += Time.deltaTime;
 
-        heightDiff = currHeight;
-        heightDiff.y = currHeight.y + heightDifPerSecond;
-
-        currHeight = heightDiff;
-        gameObject.transform.position = currHeight * Time.deltaTime;
+        if (gameObject.transform.position.y < MaxHeight.y)
+        {
+            gameObject.transform.position = Vector3.Lerp(StartingPos, MaxHeight, currTime / maxTime);
+        }
     }
-
+    #endregion
+    #region PublicVoids
     public void startRising()
     {
         started = true;
@@ -55,4 +59,5 @@ public class LavaRise : MonoBehaviour
     {
         maxTime = time;
     }
+    #endregion
 }

@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lava: {fileID: 2856757424236974863}
   maxTime: 100
+  startTest: 0
 --- !u!1 &2856757424236974863
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ccff8c1c9b1a5a488e1c520720412e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHight: {fileID: 2856757423030847273}
+  HeightLimit: {fileID: 2856757423030847273}
 --- !u!65 &2856757424236974857
 BoxCollider:
   m_ObjectHideFlags: 0
