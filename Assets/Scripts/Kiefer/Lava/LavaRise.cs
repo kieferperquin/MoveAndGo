@@ -5,58 +5,40 @@ using UnityEngine;
 
 public class LavaRise : MonoBehaviour
 {
-    [SerializeField] GameObject MaxHight;
+    [SerializeField] private GameObject MaxHeight;
 
-    int maxTime;
+    private int maxTime;
 
-    int currTime;
-    int timeWaited;
-    int loopTimer;
+    private float heightDifPerSecond;
 
-    Vector3 CurrentPos;
-    Vector3 GoingPos;
+    private Vector3 currHeight;
+    private Vector3 heightDiff;
 
-    float hightDifPerSecond;
-
-    bool started = false;
-    bool once = false;
+    private bool started = false;
 
     void Start()
     {
-        float hightDif = MathF.Abs(this.gameObject.transform.position.y - MaxHight.transform.position.y);
-        hightDifPerSecond = hightDif / maxTime;
-        currTime = 1;
+        heightDifPerSecond = (MaxHeight.transform.position.y - gameObject.transform.position.y) / maxTime;
+        gameObject.transform.position = new Vector3(0, 0, 0);
     }
 
     void Update()
     {
-        if (started)
+        if (started && gameObject.transform.position.y < MaxHeight.transform.position.y)
         {
-            if (!once)
-            {
-                once = true;
-
-                timeWaited += (int)Time.time;
-            }
-
-            loopTimer = (int)Time.time - timeWaited;
-
-            if (loopTimer >= currTime && currTime < maxTime)
-            {
-                currTime++;
-                LavaIncrease();
-            }
+            LavaRising();
         }
     }
 
-    void LavaIncrease()
+    void LavaRising()
     {
-        CurrentPos = gameObject.transform.position;
+        currHeight = gameObject.transform.position;
 
-        GoingPos = CurrentPos;
-        GoingPos.y = CurrentPos.y + hightDifPerSecond;
+        heightDiff = currHeight;
+        heightDiff.y = currHeight.y + heightDifPerSecond;
 
-        gameObject.transform.position = GoingPos;
+        currHeight = heightDiff;
+        gameObject.transform.position = currHeight * Time.deltaTime;
     }
 
     public void startRising()

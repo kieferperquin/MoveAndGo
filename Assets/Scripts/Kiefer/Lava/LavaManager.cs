@@ -6,6 +6,16 @@ public class LavaManager : MonoBehaviour
 {
     [SerializeField] GameObject lava;
     public int maxTime;
+    [SerializeField] bool startTest;
+
+    private void Update()
+    {
+        if (startTest)
+        {
+            StartLava();
+            startTest = false;
+        }
+    }
 
     private void Start()
     {
@@ -16,6 +26,7 @@ public class LavaManager : MonoBehaviour
     {
         lava.GetComponent<LavaRise>().startRising();
     }
+
     public void Reset()
     {
         lava.GetComponent<LavaRise>().Reset();
