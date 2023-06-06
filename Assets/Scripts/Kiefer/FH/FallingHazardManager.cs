@@ -4,12 +4,37 @@ using UnityEngine;
 
 public class FallingHazardManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] FH;
-    [SerializeField] GameObject[] lanes;
-    [SerializeField] bool spawn;
+    [SerializeField] private GameObject[] FH;
+    [SerializeField] private GameObject[] lanes;
+    
+    [SerializeField] private int maxTime;
+    [SerializeField] private int minTime;
+
+    private float spawnInterval;
+    private float timer;
+    
+    private bool spawn;
+    private bool started;
+
+    private void Start()
+    {
+        spawnInterval = Random.Range(minTime, maxTime);
+    }
 
     private void Update()
     {
+        if (started)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= spawnInterval)
+            {
+                spawn = true;
+                spawnInterval = Random.Range(minTime, maxTime);
+                timer = 0f;
+            }
+        }
+
         if (spawn)
         {
             SpawnFH();
@@ -19,23 +44,21 @@ public class FallingHazardManager : MonoBehaviour
 
     void SpawnFH()
     {
-        System.Random rnd = new System.Random();
-
-        Instantiate(FH[rnd.Next(FH.Length)], CalRowToSpawn(), Quaternion.identity);
+        Instantiate(FH[Random.Range(0, FH.Length)], CalRowToSpawn(Random.Range(0, lanes.Length)), Quaternion.identity);
     }
 
-    Vector3 CalRowToSpawn()
+    Vector3 CalRowToSpawn(int random)
     {
+        return lanes[random].transform.position;
+    }
 
+    public void StartFH()
+    {
+        started = true;
+    }
 
-
-
-
-
-        Vector3 place1;
-        place1.x = 1;
-        place1.y = 1;
-        place1.z = 1;
-        return place1;
+    public void StopFH()
+    {
+        started = false;
     }
 }

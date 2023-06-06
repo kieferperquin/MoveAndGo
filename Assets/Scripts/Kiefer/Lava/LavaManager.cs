@@ -5,24 +5,16 @@ using UnityEngine;
 public class LavaManager : MonoBehaviour
 {
     [SerializeField] private GameObject lava;
-    public int maxTime;
-    [SerializeField] private bool startTest;
 
-    private void Update()
-    {
-        if (startTest)
-        {
-            StartLava();
-            startTest = false;
-        }
-    }
+    public int maxTime;
+
     public void StartLava()
     {
         lava.GetComponent<LavaRise>().SetMaxTime(maxTime);
         lava.GetComponent<LavaRise>().startRising();
     }
 
-    public void Reset()
+    public void ResetLava()
     {
         lava.GetComponent<LavaRise>().Reset();
     }
