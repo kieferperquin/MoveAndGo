@@ -10,8 +10,8 @@ public class FallingHazardManager : MonoBehaviour
 
     [SerializeField] private GameObject warningText;
 
-    [SerializeField] private int maxTime;
     [SerializeField] private int minTime;
+    [SerializeField] private int maxTime;
 
     [SerializeField] private float warningTime;
 

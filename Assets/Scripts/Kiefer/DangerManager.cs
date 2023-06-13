@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class DangerManager : MonoBehaviour
 {
+    public static DangerManager instance;
+
     [SerializeField] GameObject FHManager;
     [SerializeField] GameObject Lava;
 
@@ -11,6 +12,18 @@ public class DangerManager : MonoBehaviour
     [SerializeField] private bool Lava_Reset;
     [SerializeField] private bool FH_Start;
     [SerializeField] private bool FH_Stop;
+
+    private void Awake()
+    {
+        if (instance = null)
+        {
+            instance = this;
+        }
+        else if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (Lava_Start)
