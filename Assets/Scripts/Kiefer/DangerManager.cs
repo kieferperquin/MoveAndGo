@@ -46,11 +46,11 @@ public class DangerManager : MonoBehaviour
     }
     public void LavaStart()
     {
-        Lava.GetComponent<LavaManager>().StartLava();
+        Lava.GetComponent<LavaRise>().StartLava();
     }
     public void LavaReset()
     {
-        Lava.GetComponent<LavaManager>().ResetLava();
+        Lava.GetComponent<LavaRise>().ResetLava();
     }
     public void FHStart()
     {

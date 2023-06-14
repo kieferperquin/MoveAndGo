@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 public class FallingHazardManager : MonoBehaviour
 {
+    #region variables
     [SerializeField] private GameObject[] FH;
     [SerializeField] private GameObject[] lanes;
 
@@ -24,7 +25,8 @@ public class FallingHazardManager : MonoBehaviour
     
     private bool spawn;
     private bool started;
-
+    #endregion
+    #region code
     private void Start()
     {
         if (lanes.Length != colorCodes.Length)
@@ -37,7 +39,7 @@ public class FallingHazardManager : MonoBehaviour
 
     private void Update()
     {
-        if (!started)
+        if (!started)// false
             return;
 
         timer += Time.deltaTime;
@@ -50,39 +52,31 @@ public class FallingHazardManager : MonoBehaviour
         }
         if (timer >= spawnInt - warningTime)
         {
-            SpawnWarningIndicator();
+            warningText.color = colorCodes[spawnLocation];
         }
-        if (spawn)
+        if (spawn)// true
         {
-            SpawnFH();
+            warningText.color = Color.clear;
+            int whatFH = Random.Range(0, FH.Length);
+            Instantiate(FH[whatFH], lanes[spawnLocation].transform.position, FH[whatFH].transform.rotation);
+
             SetSpawnLoc();
             spawn = false;
         }
     }
+
     void SetSpawnLoc()
     {
         spawnLocation = Random.Range(0, lanes.Length);
         Debug.Log(spawnLocation);
     }
+
     void CalSpawnInt()
     {
         spawnInt = Random.Range(minTime, maxTime);
     }
-    void SpawnFH()
-    {
-        warningText.color = Color.clear;
-        int whatFH = Random.Range(0, FH.Length);
-
-        Instantiate(FH[whatFH], CalRowToSpawn(), FH[whatFH].transform.rotation);
-    }
-    void SpawnWarningIndicator()
-    {
-        warningText.color = colorCodes[spawnLocation];
-    }
-    Vector3 CalRowToSpawn()
-    {
-        return lanes[spawnLocation].transform.position;
-    }
+    #endregion
+    #region public voids
     public void StartFH()
     {
         started = true;
@@ -90,5 +84,8 @@ public class FallingHazardManager : MonoBehaviour
     public void StopFH()
     {
         started = false;
+        CalSpawnInt();
+        SetSpawnLoc();
     }
+    #endregion
 }

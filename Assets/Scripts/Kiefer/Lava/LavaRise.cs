@@ -8,7 +8,7 @@ public class LavaRise : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject HeightLimit;
 
-    private int maxTime;
+    [SerializeField] private int maxTime;
 
     private float currTime;
 
@@ -46,22 +46,16 @@ public class LavaRise : MonoBehaviour
     }
     #endregion
     #region PublicVoids
-    public void startRising()
+    public void StartLava()
     {
         started = true;
     }
-
     public void ResetLava()
     {
         MaxHeight = HeightLimit.transform.position;
         started = false;
         gameObject.transform.position = new Vector3(0, 0, 0);
         StartingPos = gameObject.transform.position;
-    }
-
-    public void SetMaxTime(int time)
-    {
-        maxTime = time;
     }
     #endregion
 }

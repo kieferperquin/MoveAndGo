@@ -940,5 +940,48 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 43
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7227887225011547509, guid: d1cc0fcfbc214a547a5e095d9f064dd1,
+        type: 3}
+      propertyPath: maxTime
+      value: 125
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7227887224834086327, guid: d1cc0fcfbc214a547a5e095d9f064dd1, type: 3}
+    - {fileID: 4894182025865298612, guid: d1cc0fcfbc214a547a5e095d9f064dd1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d1cc0fcfbc214a547a5e095d9f064dd1, type: 3}
+--- !u!1 &4894182026261433404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4894182025865298614, guid: d1cc0fcfbc214a547a5e095d9f064dd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4894182026261433403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4894182026261433405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7227887225011547504, guid: d1cc0fcfbc214a547a5e095d9f064dd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4894182026261433403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4894182026261433406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3713239582910345146, guid: d1cc0fcfbc214a547a5e095d9f064dd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4894182026261433403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4894182026261433407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4894182026261433404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510ee79de68bbbf41ad0eccbbe26d0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FHManager: {fileID: 4894182026261433406}
+  Lava: {fileID: 4894182026261433405}
+  Lava_Start: 0
+  Lava_Reset: 0
+  FH_Start: 0
+  FH_Stop: 0
