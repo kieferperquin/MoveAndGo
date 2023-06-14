@@ -15,7 +15,7 @@ public class DangerTrigger : MonoBehaviour
         {
             DangerManager.instance.LavaReset();
         }
-        else if (startFH)
+        if (startFH)
         {
             DangerManager.instance.FHStart();
         }

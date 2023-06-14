@@ -69,7 +69,9 @@ public class FallingHazardManager : MonoBehaviour
     void SpawnFH()
     {
         warningText.SetActive(false);
-        Instantiate(FH[Random.Range(0, FH.Length)], CalRowToSpawn(), Quaternion.identity);
+        int whatFH = Random.Range(0, FH.Length);
+
+        Instantiate(FH[whatFH], CalRowToSpawn(), FH[whatFH].transform.rotation);
     }
     void SpawnWarningIndicator()
     {
