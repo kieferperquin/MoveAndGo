@@ -42,6 +42,7 @@ public class DangerManager : MonoBehaviour
         {
             FHStop();
         }
+        // Lava = GameObject.Find("Lava");
     }
     public void LavaStart()
     {

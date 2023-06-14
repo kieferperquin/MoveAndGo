@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class TriggerEnterer : MonoBehaviour
@@ -13,14 +12,20 @@ public class TriggerEnterer : MonoBehaviour
     private void Start()
     {
         txt.color = Color.red;
-        txt.text = "!! GET TO THE TOP !! \n WATCH OUT FOR RISING LAVA AND FALLING HAZARDS";
+        txt.text = "!! GET TO THE TOP !! \n WATCH OUT FOR RISING LAVA \n AND FALLING HAZARDS";
     }
 
     private void OnTriggerEnter(Collider trigger)
     {
         if (trigger.gameObject.layer == LayerMask.NameToLayer("Trigger"))
-        TriggerEntered?.Invoke();
-        txt.color = Color.clear;
-        txt.text = "!! WARNING !!";
+        {
+            TriggerEntered?.Invoke();
+            txt.color = Color.clear;
+            txt.text = "!! WARNING !!";
+        }
+        if (trigger.gameObject.layer == LayerMask.NameToLayer("Hazard"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class LavaRise : MonoBehaviour
     #region Code
     void Start()
     {
+        currTime = 0;
         MaxHeight = HeightLimit.transform.position;
         started = false;
         gameObject.transform.position = new Vector3(0, 0, 0);
@@ -50,9 +51,12 @@ public class LavaRise : MonoBehaviour
         started = true;
     }
 
-    public void Reset()
+    public void ResetLava()
     {
-        Start();   
+        MaxHeight = HeightLimit.transform.position;
+        started = false;
+        gameObject.transform.position = new Vector3(0, 0, 0);
+        StartingPos = gameObject.transform.position;
     }
 
     public void SetMaxTime(int time)

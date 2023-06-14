@@ -16,6 +16,6 @@ public class LavaManager : MonoBehaviour
 
     public void ResetLava()
     {
-        lava.GetComponent<LavaRise>().Reset();
+        lava.GetComponent<LavaRise>().ResetLava();
     }
 }

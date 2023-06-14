@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,22 @@ using UnityEngine;
 public class DangerTrigger : MonoBehaviour
 {
     [SerializeField] private bool startLava, stopLava, startFH, stopFH;
-    [SerializeField] private DangerManager dm;
+    private DangerManager dm;
 
-    private void Awake()
+    private void Start()
     {
         TriggerEnterer.TriggerEntered += Entered;
+        Debug.Log("START CALLED");
+        dm = GameObject.Find("Danger").GetComponent<DangerManager>();
+    }
+    private void OnDestroy()
+    {
+        TriggerEnterer.TriggerEntered -= Entered;
+        Debug.Log("DESTROY CALLED");
     }
     private void Entered()
     {
+        Debug.Log("ENTERED CALLED");
         if (startLava)
         {
             dm.LavaStart();
