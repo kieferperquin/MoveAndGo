@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class DangerTrigger : MonoBehaviour
 {
-    [SerializeField] bool startLava, stopLava, startFH, stopFH;
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private bool startLava, stopLava, startFH, stopFH;
+    [SerializeField] private DangerManager dm;
+
+    private void Awake()
+    {
+        TriggerEnterer.TriggerEntered += Entered;
+    }
+    private void Entered()
     {
         if (startLava)
         {
-            DangerManager.instance.LavaStart();
+            dm.LavaStart();
         }
         else if (stopLava)
         {
-            DangerManager.instance.LavaReset();
+            dm.LavaReset();
         }
         if (startFH)
         {
-            DangerManager.instance.FHStart();
+            dm.FHStart();
         }
         else if (stopFH)
         {
-            DangerManager.instance.FHStop();
+            dm.FHStop();
         }
     }
 }

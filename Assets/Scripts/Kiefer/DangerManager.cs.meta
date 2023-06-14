@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: ce8e7b5c9bee01a4a8daa795889874dd
+guid: 510ee79de68bbbf41ad0eccbbe26d0f5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - FHManager: {instanceID: 0}
-  - Lava: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Xml.Linq;
 
 public class FallingHazardManager : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class FallingHazardManager : MonoBehaviour
 
     [SerializeField] private Color[] colorCodes;
 
-    [SerializeField] private GameObject warningText;
+    [SerializeField] private TMP_Text warningText;
 
     [SerializeField] private int minTime;
     [SerializeField] private int maxTime;
@@ -68,19 +70,14 @@ public class FallingHazardManager : MonoBehaviour
     }
     void SpawnFH()
     {
-        warningText.SetActive(false);
+        warningText.color = Color.clear;
         int whatFH = Random.Range(0, FH.Length);
 
         Instantiate(FH[whatFH], CalRowToSpawn(), FH[whatFH].transform.rotation);
     }
     void SpawnWarningIndicator()
     {
-        warningText.SetActive(true);
-        SetTextColor(warningText);
-    }
-    void SetTextColor(GameObject txtObject)
-    {
-        txtObject.GetComponent<Text>().color = colorCodes[spawnLocation];
+        warningText.color = colorCodes[spawnLocation];
     }
     Vector3 CalRowToSpawn()
     {
