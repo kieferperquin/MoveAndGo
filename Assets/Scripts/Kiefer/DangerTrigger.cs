@@ -11,32 +11,32 @@ public class DangerTrigger : MonoBehaviour
     private void Start()
     {
         TriggerEnterer.TriggerEntered += Entered;
-        Debug.Log("START CALLED");
         dm = GameObject.Find("Danger").GetComponent<DangerManager>();
     }
     private void OnDestroy()
     {
         TriggerEnterer.TriggerEntered -= Entered;
-        Debug.Log("DESTROY CALLED");
     }
-    private void Entered()
+    private void Entered(string name)
     {
-        Debug.Log("ENTERED CALLED");
-        if (startLava)
+        if (name == gameObject.name)
         {
-            dm.LavaStart();
-        }
-        else if (stopLava)
-        {
-            dm.LavaReset();
-        }
-        if (startFH)
-        {
-            dm.FHStart();
-        }
-        else if (stopFH)
-        {
-            dm.FHStop();
+            if (startLava)
+            {
+                dm.LavaStart();
+            }
+            else if (stopLava)
+            {
+                dm.LavaReset();
+            }
+            if (startFH)
+            {
+                dm.FHStart();
+            }
+            else if (stopFH)
+            {
+                dm.FHStop();
+            }
         }
     }
 }

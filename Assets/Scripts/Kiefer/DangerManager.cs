@@ -5,8 +5,10 @@ public class DangerManager : MonoBehaviour
 {
     public static DangerManager instance;
 
-    [SerializeField] GameObject FHManager;
-    [SerializeField] GameObject Lava;
+    [SerializeField] private GameObject FHManager;
+    private FallingHazardManager fallingHazardManager;
+    [SerializeField] private GameObject Lava;
+    private LavaRise lavaRise;
 
     [SerializeField] private bool Lava_Start;
     [SerializeField] private bool Lava_Reset;
@@ -15,14 +17,8 @@ public class DangerManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance = null)
-        {
-            instance = this;
-        }
-        else if (instance != null)
-        {
-            Destroy(gameObject);
-        }
+        lavaRise = Lava.GetComponent<LavaRise>();
+        fallingHazardManager = FHManager.GetComponent<FallingHazardManager>();
     }
     private void Update()
     {
@@ -46,18 +42,18 @@ public class DangerManager : MonoBehaviour
     }
     public void LavaStart()
     {
-        Lava.GetComponent<LavaRise>().StartLava();
+        lavaRise.StartLava();
     }
     public void LavaReset()
     {
-        Lava.GetComponent<LavaRise>().ResetLava();
+        lavaRise.ResetLava();
     }
     public void FHStart()
     {
-        FHManager.GetComponent<FallingHazardManager>().StartFH();
+        fallingHazardManager.StartFH();
     }
     public void FHStop()
     {
-        FHManager.GetComponent<FallingHazardManager>().StopFH();
+        fallingHazardManager.StopFH();
     }
 }
